@@ -13,6 +13,7 @@ console.log (worldcupFinal2014);
 console.log (worldcupFinal2014['Home Team Name']);
      
 
+console.log (worldcupFinal2014['Home Team Name']);
 //(b) Away Team name for 2014 world cup final
 
 //(c) Home Team goals for 2014 world cup final
