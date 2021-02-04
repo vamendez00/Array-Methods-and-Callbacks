@@ -39,16 +39,17 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(fifaData) {
-   let finalMatchTeams = [];
-   for (let i=0; i < fifaData.length; i++){
-    if(fifaData[i].Stage === 'Final') {
-        finalMatchTeams.push(fifaData[i]);
-    }
-    }
-    return finalMatchTeams;
-}
-console.log(getFinals);
+function getFinals() {
+    let finalMatchTeams = [];
+      for (let i=0; i < fifaData.length; i++){
+        if(fifaData[i].Stage === 'Final') {
+          finalMatchTeams.push(fifaData[i]);
+        }
+      }
+       return finalMatchTeams; 
+  }
+    
+  console.log(getFinals());
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -111,6 +112,7 @@ function getWinnersByYear(getFinals) {
         } else if ((getFinals[i]['Home Team Goals']) === (getFinals[i]['Away Team Goals'])){
             winnersByYear.push (`In ${getFinals[i].Year}, ${getFinals[i]['Win Conditions']} `);
         }
+
     }
         return winnersByYear;
 }
