@@ -101,12 +101,18 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(getYears, getWinners) {
-    let winnerResultsByYear = [];
-    for (let i=0; i < getYears.length; i++){
-        winnerResultsByYear.push (`In ${getYears[i]}, ${getWinners[i]} won the world cup!`);
+function getWinnersByYear(getFinals) {
+    let winnersByYear = [];
+    for (let i=0; i < getFinals.length; i++){
+        if ((getFinals[i]['Home Team Goals']) > (getFinals[i]['Away Team Goals'])){
+        winnersByYear.push (`In ${getFinals[i].Year}, ${getFinals[i]['Home Team Name']} won the world cup!`);
+        } else if ((getFinals[i]['Home Team Goals']) < (getFinals[i]['Away Team Goals'])){
+            winnersByYear.push (`In ${getFinals[i].Year}, ${getFinals[i]['Away Team Name']} won the world cup!`);
+        } else if ((getFinals[i]['Home Team Goals']) === (getFinals[i]['Away Team Goals'])){
+            winnersByYear.push (`In ${getFinals[i].Year}, ${getFinals[i]['Win Conditions']} `);
+        }
     }
-return winnerResultsByYear;
+        return winnersByYear;
 }
 console.log(getWinnersByYear);
 
