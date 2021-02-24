@@ -86,7 +86,7 @@ function getWinners(getFinals) {
     }
         return winners;
 }
-
+console.log(getWinners);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
