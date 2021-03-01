@@ -38,15 +38,26 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-function getFinals() {
-    let finalMatchTeams = [];
-      for (let i=0; i < fifaData.length; i++){
-        if(fifaData[i].Stage === 'Final') {
-          finalMatchTeams.push(fifaData[i]);
-        }
-      }
-       return finalMatchTeams; 
+var finalMatchTeams =[];
+
+function getFinals(array) {
+
+    //using for loop
+    // let finalMatchTeams = [];
+    //   for (let i=0; i < fifaData.length; i++){
+    //     if(fifaData[i].Stage === 'Final') {
+    //       finalMatchTeams.push(fifaData[i]);
+    //     }
+    //   }
+    //    return finalMatchTeams; 
+
+    //using .filter
+finalMatchTeams = array.filter(function(finalsTeams){
+        return (finalsTeams.Stage === "Final");
+    })
+    return (finalMatchTeams);
 }
+getFinals(fifaData);
 
 
 
@@ -56,15 +67,23 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function getFinals from task 2 
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(getFinals) {
-    let years = [];
-    for (let i=0; i < getFinals.length; i++){
-        years.push(getFinals[i].Year);
-        }
-        return years;
+function getYears(array, callback) {
+    let finals = callback(array);
+    // console.log(finals);
+    let years = finals.map((item) => {
+    return item.Year;
+  }) 
+  return years;
 }
+getYears(fifaData, getFinals);
+   
+/*conventional method*/
+    // let years = [];
 
-
+    // for (let i=0; i < getFinals.length; i++){
+    //     years.push(getFinals[i].Year);
+    //     }
+    //     return years;
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function getWinners to do the following:  
@@ -126,7 +145,7 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
+function getAverageGoals(callback) {
    /* code here */
 }
 
