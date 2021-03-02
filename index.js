@@ -38,21 +38,9 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-var finalMatchTeams =[];
-
 function getFinals(array) {
 
-    //using for loop
-    // let finalMatchTeams = [];
-    //   for (let i=0; i < fifaData.length; i++){
-    //     if(fifaData[i].Stage === 'Final') {
-    //       finalMatchTeams.push(fifaData[i]);
-    //     }
-    //   }
-    //    return finalMatchTeams; 
-
-    //using .filter
-finalMatchTeams = array.filter(function(finalsTeams){
+    let finalMatchTeams = array.filter(function(finalsTeams){
         return (finalsTeams.Stage === "Final");
     })
     return (finalMatchTeams);
@@ -122,7 +110,6 @@ function getWinnersByYear(getFinals) {
         } else if ((getFinals[i]['Home Team Goals']) === (getFinals[i]['Away Team Goals'])){
             winnersByYear.push (`In ${getFinals[i].Year}, ${getFinals[i]['Win Conditions']} `);
         }
-
     }
         return winnersByYear;
 }
@@ -139,23 +126,23 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(array, callback) {
-    let finals = callback(array);
+function getAverageGoals(array) {
+    let finals = getFinals(array);
   
     let totalGoalsPerMatch = finals.map((item) => {
         return (item['Home Team Goals']) + (item['Away Team Goals'])
-        }) 
+        }) ;
     // console.log (totalGoalsPerMatch);
         
     let totalAverage = totalGoalsPerMatch.reduce(function(counter, goals){
         // console.log (`Total goals is at: ${counter}`);
         // console.log (`Goals added to counter is ${goals}`);
-      return ((counter + goals)/finals.length);
-  }, 0);
-    console.log (totalAverage.toFixed(2));
-}
-
-getAverageGoals(fifaData, getFinals);
+      return (counter + goals);
+  });
+    let average = (totalAverage/totalGoalsPerMatch.length);
+    return average.toFixed(2);
+  }
+ getAverageGoals(getFinals(fifaData));
 
 
 /// 🥅 STRETCH 🥅 ///
